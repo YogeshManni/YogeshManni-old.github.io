@@ -1,0 +1,82 @@
+ 
+<html >
+<head>
+    <title>Neighborhood Map</title>
+    <meta charset="utf-8">
+  
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+ <link rel="stylesheet" href="css/offline-theme-dark-indicator.css">
+  <link rel="stylesheet" href="css/offline-language-english-indicator.css">
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+     <script src="js/offline.min.js"></script>
+</head>
+
+<body>
+  
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <main class="col p-0 navbar-inverse">
+                <a href class="float-right m-3 navbar-light" data-target="#sidebar" data-toggle="collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="content bg-inverse"> 
+                                      <div id="map">
+                        
+                        <p class="Error_in_Map"></p>
+                    </div>
+                </div>
+            </main>
+            
+
+
+            <nav class="col-2 collapse bg-inverse pt-2 h-100 nav_width" id="sidebar">
+                <h4 class="heading text-white">Neighborhood Map</h4>
+                <input class="search" data-bind="textInput: searchOption, valueUpdate: 'afterkeydown'" placeholder="Search Locations...">
+                <hr class="lining">
+                <ul class="nav flex-column" data-bind="foreach: search">
+                    <a href="#"><li class="nav-item text-white locationList" data-bind="text: title, click: $parent.AnimateCurrentMarker"></li></a>
+                </ul>
+
+            </nav>
+        
+        </div>
+    </div>
+ <script  src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"> </script>
+ <script   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous">
+    </script>
+<script   src="js/constructMarkers.js" charset="utf-8">
+    </script>
+<script  src="js/styling.js" charset="utf-8">
+    </script>
+
+      <script>
+      $(document).ready(function() {
+  function Resize() {
+    windowHeight = $(window).innerHeight();
+    $('#map').css('min-height', windowHeight);
+    $('#sidebar').css('min-height', windowHeight);
+  };
+  Resize();
+
+  $(window).resize(function() {
+    Resize();
+  });
+});
+    </script>
+
+<script
+        src="js/app.js" charset="utf-8">
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAeN3lPi_iKD6q3y69mWP3_ZQcuhKl2-Us&callback=MyMap"
+        onerror="googleError()">
+    </script>
+</body>
+</html>
